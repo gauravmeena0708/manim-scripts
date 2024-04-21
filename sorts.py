@@ -131,3 +131,42 @@ class SelectionSortScene2(Scene):
         temp = bars[i]
         bars[i] = bars[j]
         bars[j] = temp 
+
+class BubbleSortBoxes(Scene):
+    def construct(self):
+        # Define box heights
+        box_heights = [2, 6, 7, 3, 5, 9, 1]
+        
+        # Create boxes
+        boxes = VGroup(*[
+            Square(side_length=1, fill_color=WHITE, stroke_width=2)
+            for _ in range(len(box_heights))
+        ])
+        
+        # Set heights and colors of the boxes based on input
+        for box, height in zip(boxes, box_heights):
+            box.stretch_to_fit_height(height)
+            box.set_fill(color=BLUE, opacity=0.8)
+        
+        # Arrange boxes in a row
+        boxes.arrange(RIGHT, buff=0.2)
+        boxes.move_to(ORIGIN)
+        
+        # Display boxes
+        self.play(Create(boxes))
+        self.wait()
+        
+        # Bubble sort algorithm
+        n = len(box_heights)
+        for i in range(n - 1):
+            for j in range(0, n - i - 1):
+                if box_heights[j] > box_heights[j + 1]:
+                    # Swap heights
+                    box_heights[j], box_heights[j + 1] = box_heights[j + 1], box_heights[j]
+                    # Swap positions of boxes
+                    boxes[j], boxes[j + 1] = boxes[j + 1], boxes[j]
+                    # Move boxes to new positions
+                    self.play(Swap(boxes[j], boxes[j + 1]))
+        
+        self.wait()
+
