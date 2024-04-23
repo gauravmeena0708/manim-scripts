@@ -65,3 +65,5 @@ class RateFunctions1Example(Scene):
             run_time=7
         )
         self.wait()
+
+        
