@@ -1,5 +1,6 @@
 from manim import *
-import random 
+import random
+from manim_utils import get_diceface
 
 class Dice(Scene):
     def construct(self):
@@ -37,53 +38,11 @@ class Dice(Scene):
         axis = np.random.rand(3)
         self.play(Rotate(all_faces, axis=axis, angle=360 * DEGREES * random.random()))
 
-from manim import *
-def get_diceface(num=1):
-    dice_face = VGroup()
+# The get_diceface function has been moved to manim_utils.py
 
-    # Create the rounded square base
-    round_square = RoundedRectangle(corner_radius=0.3, height=2.0, width=2.0)
-    dice_face.add(round_square)
-    dot1 = Dot(radius=0.15, color=GREEN)
-    dot2 = Dot(radius=0.15, color=GREEN)
-    dot3 = Dot(radius=0.15, color=GREEN)
-    dot4 = Dot(radius=0.15, color=GREEN)
-    dot5 = Dot(radius=0.15, color=GREEN)
-    dot6 = Dot(radius=0.15, color=GREEN)
+import random # random is still used by RoundSquareDots, DiceProbability, HundredDice, MatrixScene
+# from manim import * # This is already imported at the top
 
-    gap_factor = 0.6
-
-    if num == 1:
-        round_square.add(dot1.move_to(ORIGIN))
-    elif num == 2:
-        round_square.add(dot1.move_to(LEFT * gap_factor))
-        round_square.add(dot2.move_to(RIGHT * gap_factor))
-    elif num == 3:
-        round_square.add(dot1.move_to(ORIGIN))
-        round_square.add(dot2.move_to(UP * gap_factor))
-        round_square.add(dot3.move_to(DOWN * gap_factor))
-    elif num == 4:
-        round_square.add(dot1.move_to(UR * gap_factor))
-        round_square.add(dot2.move_to(UL * gap_factor))
-        round_square.add(dot3.move_to(DR * gap_factor))
-        round_square.add(dot4.move_to(DL * gap_factor))
-    elif num == 5:
-        round_square.add(dot1.move_to(ORIGIN))
-        round_square.add(dot2.move_to(UP * gap_factor))
-        round_square.add(dot3.move_to(DOWN * gap_factor))
-        round_square.add(dot4.move_to(LEFT * gap_factor))
-        round_square.add(dot5.move_to(RIGHT * gap_factor))
-    elif num == 6:
-        round_square.add(dot1.move_to(UR * gap_factor))
-        round_square.add(dot2.move_to(UL * gap_factor))
-        round_square.add(dot3.move_to(LEFT * gap_factor))
-        round_square.add(dot4.move_to(RIGHT * gap_factor))
-        round_square.add(dot5.move_to(DR * gap_factor))
-        round_square.add(dot6.move_to(DL * gap_factor))
-    return dice_face
-
-
-import random
 class RoundSquareDots(Scene):
     def construct(self):
         round_square1 = get_diceface(1)
