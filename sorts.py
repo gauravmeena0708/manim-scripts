@@ -1,4 +1,5 @@
 from manim import *
+from manim_utils import create_sortable_bars, animate_bar_swap
 
 class InsertionSortScene(Scene):
     def construct(self):
@@ -6,39 +7,25 @@ class InsertionSortScene(Scene):
         unsorted_list = [8, 3, 1, 6, 4, 7, 2, 5]  
 
         # Create visual representations (e.g., rectangles) 
-        
-        bars = self.create_bars(unsorted_list)
+        bars = create_sortable_bars(unsorted_list)
+        # Ensure bars have a default color if not set by create_sortable_bars
+        for bar in bars:
+            if bar.get_fill_opacity() == 0: # Check if color not set
+                 bar.set_fill(color=BLUE, opacity=0.75) # Default color
+        self.add(bars) # Add bars to the scene
+
 
         # Implement insertion sort with animations
         self.insertion_sort(bars)
-
-    def create_bars(self, data):
-        bars = VGroup(*[
-            Rectangle(width=0.5, height=value) for value in data
-        ]).arrange(RIGHT, buff=0.3)
-        #bars.arrange(DOWN)
-        bottom_y = config.frame_y_radius * 1 
-        bars.shift(DOWN * bottom_y)  # Shift the bars to the bottom
-        return bars
 
     def insertion_sort(self, bars):
         for i in range(1, len(bars)):
             j = i
             while j > 0 and bars[j - 1].get_height() > bars[j].get_height():
-                self.swap_bars(bars, j, j - 1)
+                animate_bar_swap(self, bars, j, j - 1)
                 j -= 1
 
         # Optional: Indicate the array is sorted
-
-    def swap_bars(self, bars, i, j):
-        self.play(bars[i].animate.move_to(bars[j].get_center()),
-                  bars[j].animate.move_to(bars[i].get_center()),
-                  run_time=0.5)
-
-        # Manually swap elements within the VGroup
-        temp = bars[i]
-        bars[i] = bars[j]
-        bars[j] = temp 
 
 class SelectionSortScene(Scene):
     def construct(self):
@@ -46,18 +33,15 @@ class SelectionSortScene(Scene):
         unsorted_list = [8, 3, 1, 6, 4, 7, 2, 5]  
 
         # Create visual representations (e.g., rectangles) 
-        bars = self.create_bars(unsorted_list)
+        bars = create_sortable_bars(unsorted_list)
+        # Ensure bars have a default color if not set by create_sortable_bars
+        for bar in bars:
+            if bar.get_fill_opacity() == 0: # Check if color not set
+                bar.set_fill(color=BLUE, opacity=0.75) # Default color
+        self.add(bars) # Add bars to the scene
 
         # Implement selection sort with animations
         self.selection_sort(bars)
-
-    def create_bars(self, data):
-        bars = VGroup(*[
-            Rectangle(width=0.5, height=value) for value in data
-        ]).arrange(RIGHT, buff=0.3)
-        bottom_y = config.frame_y_radius * 1 
-        bars.shift(DOWN * bottom_y)  # Shift the bars to the bottom
-        return bars
 
     def selection_sort(self, bars):
         n = len(bars)
@@ -68,19 +52,9 @@ class SelectionSortScene(Scene):
                     min_idx = j
 
             if min_idx != i:
-                self.swap_bars(bars, i, min_idx)
+                animate_bar_swap(self, bars, i, min_idx)
 
         # Optional: Indicate the array is sorted
-
-    def swap_bars(self, bars, i, j):
-        self.play(bars[i].animate.move_to(bars[j].get_center()),
-                  bars[j].animate.move_to(bars[i].get_center()),
-                  run_time=0.5)
-
-        # Manually swap elements within the VGroup
-        temp = bars[i]
-        bars[i] = bars[j]
-        bars[j] = temp 
 
 class SelectionSortScene2(Scene):
     def construct(self):
@@ -88,18 +62,11 @@ class SelectionSortScene2(Scene):
         unsorted_list = [8, 3, 1, 6, 4, 7, 2, 5]  
 
         # Create visual representations (e.g., rectangles) 
-        bars = self.create_bars(unsorted_list)
+        bars = create_sortable_bars(unsorted_list, initial_color=BLUE, initial_opacity=0.75)
+        self.add(bars) # Add bars to the scene
 
         # Implement selection sort with animations
         self.selection_sort(bars)
-
-    def create_bars(self, data):
-        bars = VGroup(*[
-            Rectangle(width=0.5, height=value, fill_color=BLUE, fill_opacity=0.75) for value in data
-        ]).arrange(RIGHT, buff=0.3)
-        bottom_y = config.frame_y_radius * 1 
-        bars.shift(DOWN * bottom_y)  # Shift the bars to the bottom
-        return bars
 
     def selection_sort(self, bars):
         n = len(bars)
@@ -113,24 +80,14 @@ class SelectionSortScene2(Scene):
                     min_idx = j
 
             if min_idx != i:
-                self.swap_bars(bars, i, min_idx)
+                animate_bar_swap(self, bars, i, min_idx)
 
             # Reset the colors
-            for j in range(i + 1, n):
-                bars[j].set_fill(color=BLUE, opacity=0.75)
-            bars[i].set_fill(color=BLUE, opacity=0.75)
+            bars[i].set_fill(color=BLUE, opacity=0.75) # Final color for the sorted bar (now at index i)
+            for k in range(i + 1, n): # Reset remaining bars in the unsorted part
+                bars[k].set_fill(color=BLUE, opacity=0.75)
 
         # Optional: Indicate the array is sorted
-
-    def swap_bars(self, bars, i, j):
-        self.play(bars[i].animate.move_to(bars[j].get_center()),
-                  bars[j].animate.move_to(bars[i].get_center()),
-                  run_time=0.5)
-
-        # Manually swap elements within the VGroup
-        temp = bars[i]
-        bars[i] = bars[j]
-        bars[j] = temp 
 
 class BubbleSortBoxes(Scene):
     def construct(self):
