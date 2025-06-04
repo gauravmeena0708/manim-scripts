@@ -1,4 +1,3 @@
-Prompt for Gemini to Generate a Manim Script:
 
 **Objective:** Create a complete Python Manim script for a short educational animation (approximately 30-60 seconds) explaining the concept of **[INSERT YOUR CORE CONCEPT HERE - e.g., "Photosynthesis," "The Doppler Effect," "Basic Structure of a Neural Network Neuron," "How a Transistor Works as a Switch"].**
 
