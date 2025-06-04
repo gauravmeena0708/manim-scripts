@@ -34,7 +34,29 @@ To run the scripts in this repository, you'll need to set up a Python environmen
     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
     ```
 
-3.  **Install the required packages:**
+3.  **Install LaTeX:**
+    Manim requires a LaTeX distribution for rendering text and formulas. Install a LaTeX distribution suitable for your operating system:
+    *   **Debian/Ubuntu:**
+        ```bash
+        sudo apt-get install texlive-full
+        ```
+    *   **macOS (using MacPorts):**
+        ```bash
+        sudo port install texlive-full
+        ```
+    *   **macOS (using Homebrew):**
+        ```bash
+        brew install --cask mactex
+        ```
+    *   **Windows (using MiKTeX):**
+        Download and install MiKTeX from [https://miktex.org/download](https://miktex.org/download). A full installation is recommended.
+    *   **Windows (using Chocolatey):**
+        ```powershell
+        choco install miktex --params="--shared"
+        ```
+        (Ensure you run PowerShell as Administrator)
+
+4.  **Install the required packages:**
     ```bash
     pip install -r requirements.txt
     ```
