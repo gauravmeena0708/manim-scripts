@@ -1,4 +1,9 @@
-from manim import *
+import sys
+import os
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+    from manim import *
 from src.manim_utils import create_sortable_bars, animate_bar_swap
 import random
 import copy
