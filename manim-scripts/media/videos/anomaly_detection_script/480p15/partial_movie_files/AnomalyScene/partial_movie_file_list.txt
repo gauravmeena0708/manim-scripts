@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/1185818338_2447739667_223132457.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_2611185714_2323888490.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_4197919095_1502613136.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_1473322752_1152995526.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_1257988456_2472058105.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_1631046255_2169604022.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_3320065307_4016071647.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_411395341_124798771.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_3885097400_2745605964.mp4'
+file 'file:/app/manim-scripts/media/videos/anomaly_detection_script/480p15/partial_movie_files/AnomalyScene/624642324_2844360058_2327486161.mp4'
