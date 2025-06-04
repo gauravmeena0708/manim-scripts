@@ -1,5 +1,5 @@
 from manim import *
-from manim_utils import create_sortable_bars, animate_bar_swap
+from src.manim_utils import create_sortable_bars, animate_bar_swap
 
 class InsertionSortScene(Scene):
     def construct(self):

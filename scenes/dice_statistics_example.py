@@ -1,5 +1,5 @@
 from manim import *
-from manim_utils import get_diceface
+from src.manim_utils import get_diceface
 import random
 
 class DiceStatisticsScene(Scene):

@@ -3,3 +3,12 @@
 *.mp3
 *.pyc
 /cards/
+__pycache__/
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+output/
+*.swp
+.DS_Store

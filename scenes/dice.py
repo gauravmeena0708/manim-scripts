@@ -1,6 +1,6 @@
 from manim import *
 import random
-from manim_utils import get_diceface
+from src.manim_utils import get_diceface
 
 class Dice(Scene):
     def construct(self):
